@@ -41,6 +41,16 @@ class FirstFragment : Fragment() {
             )
         }
 
+        binding.btName.setOnClickListener(){
+// findNavController().navigate(R.id.action_FirstFragment_to_saludoFragment)
+            //buscamos el nombre
+            val nombre=binding.etName.text.toString()
+            //creamos la acción pasándole el valor como argumento
+            val action=FirstFragmentDirections.actionFirstFragmentToSaludoFragment(nombre)
+            //abrimos SaludoFragment
+            findNavController().navigate(action)
+        }
+
     }
 
     override fun onDestroyView() {

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import net.iessochoa.carlosayalasarrio.p4ejemplo1.databinding.FragmentSaludoBinding
 
@@ -24,6 +25,8 @@ class SaludoFragment : Fragment() {
     val args:SaludoFragmentArgs by navArgs()
 
 
+
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -35,10 +38,14 @@ class SaludoFragment : Fragment() {
             false)
         return binding.root
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
-    {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvSaludo.text = "Hola ${args.nombre}"
+
+        binding.btCambiarNombre.setOnClickListener {
+            val action = SaludoFragmentDirections.actionSaludoFragmentToCambiarNombreFragment(args.nombre)
+            findNavController().navigate(action)
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

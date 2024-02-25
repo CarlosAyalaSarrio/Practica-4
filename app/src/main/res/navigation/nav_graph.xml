@@ -38,4 +38,23 @@
             app:argType="string"
             android:defaultValue="Pepe" />
     </fragment>
+
+    <fragment
+        android:id="@+id/CambiarNombreFragment"
+        android:name="net.iessochoa.carlosayalasarrio.p4ejemplo1.CambiarNombreFragment"
+        android:label="CambiarNombreFragment" >
+        <argument
+            android:name="nombre"
+            app:argType="string" />
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_saludoFragment_to_cambiarNombreFragment"
+        app:destination="@id/CambiarNombreFragment" />
+    <action
+        android:id="@+id/action_cambiarNombreFragment_to_saludoFragment"
+        app:destination="@id/saludoFragment"
+        app:popUpTo="@id/saludoFragment"
+        app:popUpToInclusive="true"/>
 </navigation>
